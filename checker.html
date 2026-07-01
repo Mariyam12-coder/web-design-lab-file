@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vowel or Consonant Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Vowel or Consonant Checker</h2>
+    
+    <input type="text" id="charInput" maxlength="1" placeholder="Enter a letter">
+    <button onclick="checkCharacter()">Check</button>
+    
+    <div id="result"></div>
+
+    <script>
+        function checkCharacter() {
+            var ch = document.getElementById("charInput").value.trim().toLowerCase();
+            var res = document.getElementById("result");
+
+            res.innerHTML = "";
+
+            if (ch === "") {
+                res.innerHTML = "Please enter a character.";
+                res.style.color = "red";
+                return;
+            }
+
+            if (ch < 'a' || ch > 'z') {
+                res.innerHTML = "Invalid input! Please enter a letter.";
+                res.style.color = "red";
+                return;
+            }
+
+            if (ch === 'a' || ch === 'e' || ch === 'i' || ch === 'o' || ch === 'u') {
+                res.innerHTML = ch.toUpperCase() + " is a Vowel.";
+                res.style.color = "green";
+            } else {
+                res.innerHTML = ch.toUpperCase() + " is a Consonant.";
+                res.style.color = "blue";
+            }
+        }
+    </script>
+
+</body>
+</html>

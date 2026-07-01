@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nykaa | Beauty, Cosmetic & Skincare Shopping Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-pink: #fc2779;
+            --brand-dark: #3f414d;
+            --bg-light: #f4f4f4;
+            --border-color: #e6e6e6;
+            --radius-sm: 4px;
+            --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: var(--brand-dark);
+            overflow-x: hidden;
+        }
+
+        /* Top Header Navigation */
+        .site-header {
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .nav-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+
+        .brand-logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--brand-pink);
+            letter-spacing: 1.5px;
+            text-decoration: none;
+        }
+
+        .search-container {
+            flex: 0 1 500px;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px 16px 10px 42px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background-color: #f3f4f6;
+            outline: none;
+            font-size: 14px;
+            transition: var(--transition-smooth);
+        }
+
+        .search-container input:focus {
+            background-color: #ffffff;
+            border-color: var(--brand-pink);
+            box-shadow: 0 0 0 3px rgba(252, 39, 121, 0.15);
+        }
+
+        .search-container .fa-search {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .user-utilities {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .util-link {
+            background: none;
+            border: none;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--brand-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .badge-counter {
+            background-color: var(--brand-pink);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 20px;
+            position: absolute;
+            top: -10px;
+            right: -12px;
+        }
+
+        .mega-menu {
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            padding: 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .mega-menu a {
+            text-decoration: none;
+            color: #4b5563;
+            transition: var(--transition-smooth);
+        }
+
+        .mega-menu a:hover {
+            color: var(--brand-pink);
+        }
+
+        /* Hero Banner Block */
+        .promo-hero {
+            height: 340px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%), 
+                        url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding: 0 8%;
+        }
+
+        .hero-banner-text h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-banner-text p {
+            font-size: 18px;
+            margin-bottom: 24px;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            background-color: var(--brand-pink);
+            color: #ffffff;
+            border: none;
+            padding: 12px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .cta-btn:hover {
+            background-color: #e01b65;
+            transform: translateY(-1px);
+        }
+
+        /* Core Catalog Grid */
+        .catalog-container {
+            max-width: 1280px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            color: #111827;
+            letter-spacing: -0.3px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 28px;
+        }
+
+        .item-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+            border-color: #d1d5db;
+        }
+
+        .card-media {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .card-media img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .item-details {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+            line-height: 1.4;
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            margin-bottom: 8px;
+        }
+
+        .price-tag {
+            font-size: 16px;
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .action-submit-btn {
+            background: #ffffff;
+            border: 1px solid var(--brand-pink);
+            color: var(--brand-pink);
+            padding: 10px;
+            width: 100%;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .action-submit-btn:hover {
+            background: var(--brand-pink);
+            color: #ffffff;
+        }
+
+        /* Cart Drawer Sidebar Overlays */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -8px 0 30px rgba(0,0,0,0.08);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .drawer-overlay.is-visible {
+            right: 0;
+        }
+
+        .drawer-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .drawer-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .close-drawer-trigger {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .drawer-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .line-item {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .line-item img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+        }
+
+        .line-item-meta {
+            flex: 1;
+        }
+
+        .line-item-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .line-item-pricing {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .remove-line-item {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .drawer-footer {
+            padding: 24px;
+            border-top: 1px solid var(--border-color);
+            background: #f9fafb;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .checkout-action-btn {
+            width: 100%;
+            background: var(--brand-pink);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        @media (max-width: 480px) {
+            .drawer-overlay {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">NYKAA</a>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for products, brands and more...">
+            </div>
+            <div class="user-utilities">
+                <button class="util-link"><i class="far fa-user"></i> Sign In</button>
+                <button class="util-link" id="cartTrigger">
+                    <i class="fas fa-shopping-bag"></i> 
+                    <span class="badge-counter" id="globalCartCounter">0</span>
+                </button>
+            </div>
+        </div>
+        <nav class="mega-menu">
+            <a href="#">Makeup</a>
+            <a href="#">Skin</a>
+            <a href="#">Hair</a>
+        </nav>
+    </header>
+
+    <section class="promo-hero">
+        <div class="hero-banner-text">
+            <h1>Grand Beauty Sale</h1>
+            <p>Flat 50% Off on International Best Sellers</p>
+            <button class="cta-btn">Explore Offer</button>
+        </div>
+    </section>
+
+    <main class="catalog-container">
+        <h2 class="section-title">Top Trending Products</h2>
+        <div class="grid-layout" id="catalogGrid">
+            </div>
+    </main>
+
+    <div class="drawer-overlay" id="cartDrawer">
+        <div class="drawer-header">
+            <h3>Shopping Bag (<span id="drawerItemCount">0</span>)</h3>
+            <button class="close-drawer-trigger" id="closeCartTrigger"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="drawer-body" id="drawerItemsWrapper">
+            </div>
+        <div class="drawer-footer">
+            <div class="summary-total">
+                <span>Subtotal</span>
+                <span id="summaryTotalPrice">₹0</span>
+            </div>
+            <button class="checkout-action-btn" onclick="alert('Proceeding to secure checkout gateway!')">Proceed To Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        const Store = {
+            inventory: [
+                {
+                    id: "p1",
+                    name: "Matte Liquid Lipstick - Pink Passion",
+                    price: 599,
+                    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80"
+                },
+                {
+                    id: "p2",
+                    name: "Hydrating Face Serum - Vitamin C+",
+                    price: 899,
+                    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80"
+                },
+                {
+                    id: "p3",
+                    name: "Waterproof Volumizing Jet Mascara",
+                    price: 450,
+                    image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=80"
+                },
+                {
+                    id: "p4",
+                    name: "Luxury Foundation Blend SPF 20",
+                    price: 1250,
+                    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80"
+                }
+            ],
+            cart: []
+        };
+
+        const UI = {
+            fallbackImg: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='none' stroke='%23ccc' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='3' width='18' height='18' rx='2' ry='2'/><circle cx='8.5' cy='8.5' r='1.5'/><polyline points='21 15 16 10 5 21'/></svg>",
+
+            init() {
+                this.renderCatalog();
+                this.setupEventListeners();
+            },
+
+            renderCatalog() {
+                const grid = document.getElementById('catalogGrid');
+                if (!grid) return;
+
+                grid.innerHTML = Store.inventory.map(item => `
+                    <div class="item-card">
+                        <div class="card-media">
+                            <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='${this.fallbackImg}';">
+                        </div>
+                        <div class="item-details">
+                            <div class="item-name">${item.name}</div>
+                            <div class="price-tag">₹${item.price}</div>
+                        </div>
+                        <button class="action-submit-btn" data-action="add" data-id="${item.id}">
+                            Add To Bag
+                        </button>
+                    </div>
+                `).join('');
+            },
+
+            setupEventListeners() {
+                document.getElementById('catalogGrid').addEventListener('click', (e) => {
+                    if (e.target.matches('[data-action="add"]')) {
+                        const id = e.target.getAttribute('data-id');
+                        this.handleAddItem(id);
+                    }
+                });
+
+                document.getElementById('drawerItemsWrapper').addEventListener('click', (e) => {
+                    const removeBtn = e.target.closest('[data-action="remove"]');
+                    if (removeBtn) {
+                        const id = removeBtn.getAttribute('data-id');
+                        this.handleRemoveItem(id);
+                    }
+                });
+
+                const drawer = document.getElementById('cartDrawer');
+                document.getElementById('cartTrigger').addEventListener('click', () => drawer.classList.add('is-visible'));
+                document.getElementById('closeCartTrigger').addEventListener('click', () => drawer.classList.remove('is-visible'));
+            },
+
+            handleAddItem(id) {
+                const product = Store.inventory.find(p => p.id === id);
+                const cartItem = Store.cart.find(item => item.id === id);
+
+                if (cartItem) {
+                    cartItem.quantity += 1;
+                } else {
+                    Store.cart.push({ ...product, quantity: 1 });
+                }
+
+                this.syncCartUI();
+                document.getElementById('cartDrawer').classList.add('is-visible');
+            },
+
+            handleRemoveItem(id) {
+                Store.cart = Store.cart.filter(item => item.id !== id);
+                this.syncCartUI();
+            },
+
+            syncCartUI() {
+                const container = document.getElementById('drawerItemsWrapper');
+                let count = 0;
+                let total = 0;
+
+                container.innerHTML = Store.cart.map(item => {
+                    count += item.quantity;
+                    total += (item.price * item.quantity);
+
+                    return `
+                        <div class="line-item">
+                            <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='${this.fallbackImg}';">
+                            <div class="line-item-meta">
+                                <div class="line-item-title">${item.name}</div>
+                                <div class="line-item-pricing">${item.quantity} × ₹${item.price}</div>
+                            </div>
+                            <button class="remove-line-item" data-action="remove" data-id="${item.id}">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+
+                document.getElementById('globalCartCounter').innerText = count;
+                document.getElementById('drawerItemCount').innerText = count;
+                document.getElementById('summaryTotalPrice').innerText = `₹${total}`;
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => UI.init());
+    </script>
+</body>
+</html>
